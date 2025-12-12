@@ -115,7 +115,7 @@ pipeline {
             }
         }
 
-        stage('Validate Extract') {
+        stage('Validate Transform') {
             steps {
                 sh '''
                     echo "Running Validate Extract"
