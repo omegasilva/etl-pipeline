@@ -87,6 +87,14 @@ pipeline {
             }
         }
 
+        stage('Validate Extract') {
+            steps {
+                sh '''
+                    echo "Running Validate Extract"
+                '''
+            }
+        }
+
         stage('Transform') {
             steps {
                 sh '''
@@ -103,6 +111,14 @@ pipeline {
                       --run-date "$RUN_DATE_ARG" \
                       --src-dsn "$SRC_DB_DSN" \
                       --output-dir "data/raw/$RUN_DATE_ARG"
+                '''
+            }
+        }
+
+        stage('Validate Extract') {
+            steps {
+                sh '''
+                    echo "Running Validate Extract"
                 '''
             }
         }
