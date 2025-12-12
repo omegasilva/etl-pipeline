@@ -79,6 +79,8 @@ pipeline {
 
                     python etl/extract.py \
                       --env "$ENVIRONMENT" \
+                      --full-reload "$FULL_RELOAD" \
+                      --run-date "$RUN_DATE_ARG" \
                       --src-dsn "$SRC_DB_DSN" \
                       --output-dir "data/raw/$RUN_DATE_ARG"
                 '''
