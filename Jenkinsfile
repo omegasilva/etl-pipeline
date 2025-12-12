@@ -150,6 +150,14 @@ pipeline {
                 '''
             }
         }
+
+        stage('Additional Step') {
+            steps {
+                sh '''
+                    echo "Additional Step"
+                '''
+            }
+        }
     }
 
     post {
