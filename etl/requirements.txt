@@ -1,0 +1,17 @@
+# Core data wrangling
+pandas
+numpy
+pyarrow          # for parquet/arrow files if you use them
+
+# Databases / warehouses
+SQLAlchemy       # unified DB interface
+psycopg2-binary  # PostgreSQL driver (change if you’re not on Postgres)
+
+# Config & env management
+python-dotenv    # load secrets/config from .env files if needed
+
+# Calling APIs / external services
+requests
+
+# (Optional) Validation & nicer errors
+pydantic
