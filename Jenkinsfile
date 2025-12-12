@@ -99,9 +99,10 @@ pipeline {
 
                     python etl/transform.py \
                       --env "$ENVIRONMENT" \
+                      --full-reload "$FULL_RELOAD" \
                       --run-date "$RUN_DATE_ARG" \
-                      --input-dir "data/raw/$RUN_DATE_ARG" \
-                      --output-dir "data/processed/$RUN_DATE_ARG"
+                      --src-dsn "$SRC_DB_DSN" \
+                      --output-dir "data/raw/$RUN_DATE_ARG"
                 '''
             }
         }
@@ -118,9 +119,10 @@ pipeline {
 
                     python etl/load.py \
                       --env "$ENVIRONMENT" \
+                      --full-reload "$FULL_RELOAD" \
                       --run-date "$RUN_DATE_ARG" \
-                      --input-dir "data/processed/$RUN_DATE_ARG" \
-                      --dw-dsn "$DW_DB_DSN"
+                      --src-dsn "$SRC_DB_DSN" \
+                      --output-dir "data/raw/$RUN_DATE_ARG"
                 '''
             }
         }
@@ -137,9 +139,11 @@ pipeline {
 
                     if [ -f etl/data_quality.py ]; then
                       python etl/data_quality.py \
-                        --env "$ENVIRONMENT" \
-                        --run-date "$RUN_DATE_ARG" \
-                        --dw-dsn "$DW_DB_DSN"
+                      --env "$ENVIRONMENT" \
+                      --full-reload "$FULL_RELOAD" \
+                      --run-date "$RUN_DATE_ARG" \
+                      --src-dsn "$SRC_DB_DSN" \
+                      --output-dir "data/raw/$RUN_DATE_ARG"
                     else
                       echo "No data_quality.py found, skipping."
                     fi
