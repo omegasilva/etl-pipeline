@@ -34,8 +34,8 @@ pipeline {
 
     environment {
         // Simple text/file/secret credentials
-        SRC_DB_DSN       = credentials('src-db-dsn-secret')      // e.g. postgres://...
-        DW_DB_DSN        = credentials('dw-db-dsn-secret')       // e.g. warehouse DSN
+        SRC_DB_DSN       = 'src-db-dsn-secret'     // e.g. postgres://...
+        DW_DB_DSN        = 'dw-db-dsn-secret'     // e.g. warehouse DSN
         // For things like AWS, Snowflake, etc., add more here.
         // Example:
         // SNOWFLAKE_CREDS = credentials('snowflake-secret')
