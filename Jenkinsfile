@@ -150,7 +150,12 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'data/**/*, logs/**/*', allowEmptyArchive: true
+            script {
+                // Allocate a node so we have a FilePath/workspace
+                node {
+                    archiveArtifacts artifacts: 'data/**/*, logs/**/*', allowEmptyArchive: true
+                }
+            }
         }
         success {
             echo 'ETL pipeline completed successfully.'
